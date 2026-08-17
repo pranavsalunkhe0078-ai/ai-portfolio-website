@@ -1,0 +1,6 @@
+{
+  "name": "Pranav Salunkhe — Filmmaker Portfolio",
+  "description": "Cinematic portfolio and showcase website for filmmaker and video editor Pranav Salunkhe, featuring DaVinci Resolve workflows, MP4 video player, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

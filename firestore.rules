@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Portfolio films collection: Public can read, only admin can create/delete or update full fields
+    match /films/{filmId} {
+      allow read: if true;
+      allow create, delete: if request.auth != null && request.auth.token.email == 'salunkhepranav2502@gmail.com';
+      allow update: if (request.auth != null && request.auth.token.email == 'salunkhepranav2502@gmail.com')
+                    || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views']));
+    }
+    
+    // Contact messages: Anyone can submit, only admin can manage
+    match /contact_messages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null && request.auth.token.email == 'salunkhepranav2502@gmail.com';
+    }
+
+    // Default fallback: Only authenticated admin can read or write
+    match /{document=**} {
+      allow read, write: if request.auth != null && request.auth.token.email == 'salunkhepranav2502@gmail.com';
+    }
+  }
+}

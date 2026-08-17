@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Film": {
+      "title": "Film Project",
+      "description": "Portfolio film project metadata including video URL and thumbnail",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "genre": { "type": "string" },
+        "duration": { "type": "string" },
+        "year": { "type": "number" },
+        "description": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "views": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "aspectRatio": { "type": "string" },
+        "director": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["title", "videoUrl"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "User submitted contact form message",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "/films/{filmId}": {
+      "schema": "Film",
+      "description": "Public portfolio films collection"
+    },
+    "/contact_messages/{messageId}": {
+      "schema": "ContactMessage",
+      "description": "Messages submitted via contact form"
+    }
+  }
+}
